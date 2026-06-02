@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        a.btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #0056b3;
+        }
+        .btn-primary:hover {
+            background-color: #004494;
+        }
+        .btn-danger {
+            background-color: #d9534f;
+        }
+        .btn-danger:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Panel Principal</h2>
+        <p>Bienvenido, <strong>{{ nombre }}</strong></p>
+        
+        <a href="/buscador" class="btn btn-primary">Buscar Producto</a>
+        <a href="/logout" class="btn btn-danger">Salir del Sistema</a>
+    </div>
+</body>
+</html>
