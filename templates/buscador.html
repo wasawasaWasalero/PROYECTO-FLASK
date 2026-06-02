@@ -83,7 +83,7 @@
         const codigo = document.getElementById('codigo').value.trim();
         if (!codigo) { alert('Ingrese un código de producto'); return; }
 
-        const res  = await fetch('https://proyecto-flask-2-bdp6.onrender.com', {
+        const res  = await fetch('/api/buscar_producto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo })
