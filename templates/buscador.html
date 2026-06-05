@@ -73,17 +73,25 @@
         <div id="resultado"></div>
 
         <div class="nav-buttons">
-            <a href="/principal">Regresar</a>
-            <a href="/logout" class="logout">Salir</a>
+            <a href="principal.html">Regresar</a>
+            <a href="#" onclick="cerrarSesion(event)" class="logout">Salir</a>
         </div>
     </div>
 
     <script>
+    // Validar que el usuario haya iniciado sesión
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!localStorage.getItem('nombreUsuario')) {
+            window.location.href = 'login.html';
+        }
+    });
+
     async function buscar() {
         const codigo = document.getElementById('codigo').value.trim();
         if (!codigo) { alert('Ingrese un código de producto'); return; }
 
-        const res  = await fetch('/api/buscar_producto', {
+        // Asegúrate de que esta URL es la correcta de tu Render
+        const res  = await fetch('https://proyecto-flask-yzx4.onrender.com/api/buscar_producto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo })
@@ -104,6 +112,18 @@
         } else {
             div.innerHTML = `<p class="error">Producto no encontrado.</p>`;
         }
+    }
+
+    // Función para cerrar sesión
+    async function cerrarSesion(event) {
+        event.preventDefault();
+        try {
+            await fetch('https://proyecto-flask-yzx4.onrender.com/logout', { method: 'POST' });
+        } catch (error) {
+            console.error("Error al conectar con el servidor:", error);
+        }
+        localStorage.removeItem('nombreUsuario');
+        window.location.href = 'login.html';
     }
     </script>
 </body>

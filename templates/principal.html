@@ -59,10 +59,44 @@
 <body>
     <div class="container">
         <h2>Panel Principal</h2>
-        <p>Bienvenido, <strong>{{ nombre }}</strong></p>
         
-        <a href="/buscador" class="btn btn-primary">Buscar Producto</a>
-        <a href="/logout" class="btn btn-danger">Salir del Sistema</a>
+        <p>Bienvenido, <strong id="nombre-usuario">...</strong></p>
+        
+        <a href="buscador.html" class="btn btn-primary">Buscar Producto</a>
+        
+        <a href="#" onclick="cerrarSesion(event)" class="btn btn-danger">Salir del Sistema</a>
     </div>
+
+    <script>
+        // Al cargar la página, recuperar el nombre guardado en el Login
+        document.addEventListener('DOMContentLoaded', () => {
+            const nombre = localStorage.getItem('nombreUsuario');
+            
+            if (nombre) {
+                document.getElementById('nombre-usuario').innerText = nombre;
+            } else {
+                // Si alguien intenta entrar aquí sin iniciar sesión, lo regresamos al login
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Función para cerrar sesión
+        async function cerrarSesion(event) {
+            event.preventDefault(); // Evita que el enlace salte a la parte superior de la página
+            
+            try {
+                // Hacemos la petición a tu API en Render para limpiar la sesión en el servidor
+                await fetch('https://proyecto-flask-yzx4.onrender.com/logout', {
+                    method: 'POST'
+                });
+            } catch (error) {
+                console.error("Error al conectar con el servidor:", error);
+            }
+            
+            // Limpiamos los datos del navegador y redirigimos al login
+            localStorage.removeItem('nombreUsuario');
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
