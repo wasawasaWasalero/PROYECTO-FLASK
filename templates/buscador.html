@@ -91,7 +91,7 @@
         if (!codigo) { alert('Ingrese un código de producto'); return; }
 
         // Asegúrate de que esta URL es la correcta de tu Render
-        const res  = await fetch('https://proyecto-flask-yzx4.onrender.com/api/buscar_producto', {
+        const res  = await fetch('https://proyecto-flask-2-bdp6.onrender.com/api/buscar_producto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo })
@@ -118,7 +118,7 @@
     async function cerrarSesion(event) {
         event.preventDefault();
         try {
-            await fetch('https://proyecto-flask-yzx4.onrender.com/logout', { method: 'POST' });
+            await fetch('https://proyecto-flask-2-bdp6.onrender.com/logout', { method: 'POST' });
         } catch (error) {
             console.error("Error al conectar con el servidor:", error);
         }
