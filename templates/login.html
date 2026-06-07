@@ -58,7 +58,7 @@
             text-align: center;
             font-size: 14px;
             margin-bottom: 15px;
-            display: none; /* Oculto por defecto */
+            display: none; 
         }
     </style>
 </head>
@@ -81,7 +81,7 @@
 
     <script>
         async function iniciarSesion(event) {
-            // Evita que la página se recargue al darle al botón
+            
             event.preventDefault(); 
 
             const user = document.getElementById('username').value;
@@ -89,7 +89,7 @@
             const msjError = document.getElementById('mensaje-error');
 
             try {
-                // REEMPLAZA ESTA URL POR LA URL REAL DE TU RENDER
+                
                 const respuesta = await fetch('https://proyecto-flask-2-bdp6.onrender.com/login', {
                     method: 'POST',
                     headers: {
@@ -101,12 +101,12 @@
                 const data = await respuesta.json();
 
                 if (data.success) {
-                    // Guardamos el nombre en el navegador para usarlo en la siguiente pantalla
+                    
                     localStorage.setItem('nombreUsuario', data.nombre);
-                    // Redirigimos al panel principal
+                    
                     window.location.href = 'principal.html';
                 } else {
-                    // Mostramos el mensaje de error si falla
+                    
                     msjError.style.display = 'block';
                 }
             } catch (error) {

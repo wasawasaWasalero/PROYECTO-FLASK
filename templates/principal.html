@@ -68,24 +68,24 @@
     </div>
 
     <script>
-        // Al cargar la página, recuperar el nombre guardado en el Login
+        
         document.addEventListener('DOMContentLoaded', () => {
             const nombre = localStorage.getItem('nombreUsuario');
             
             if (nombre) {
                 document.getElementById('nombre-usuario').innerText = nombre;
             } else {
-                // Si alguien intenta entrar aquí sin iniciar sesión, lo regresamos al login
+                
                 window.location.href = 'login.html';
             }
         });
 
-        // Función para cerrar sesión
+        
         async function cerrarSesion(event) {
-            event.preventDefault(); // Evita que el enlace salte a la parte superior de la página
+            event.preventDefault(); 
             
             try {
-                // Hacemos la petición a tu API en Render para limpiar la sesión en el servidor
+                
                 await fetch('https://proyecto-flask-2-bdp6.onrender.com/logout', {
                     method: 'POST'
                 });
@@ -93,7 +93,7 @@
                 console.error("Error al conectar con el servidor:", error);
             }
             
-            // Limpiamos los datos del navegador y redirigimos al login
+            
             localStorage.removeItem('nombreUsuario');
             window.location.href = 'login.html';
         }

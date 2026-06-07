@@ -79,7 +79,7 @@
     </div>
 
     <script>
-    // Validar que el usuario haya iniciado sesión
+    
     document.addEventListener('DOMContentLoaded', () => {
         if (!localStorage.getItem('nombreUsuario')) {
             window.location.href = 'login.html';
@@ -90,7 +90,7 @@
         const codigo = document.getElementById('codigo').value.trim();
         if (!codigo) { alert('Ingrese un código de producto'); return; }
 
-        // Asegúrate de que esta URL es la correcta de tu Render
+        
         const res  = await fetch('https://proyecto-flask-2-bdp6.onrender.com/api/buscar_producto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -114,7 +114,7 @@
         }
     }
 
-    // Función para cerrar sesión
+    
     async function cerrarSesion(event) {
         event.preventDefault();
         try {
